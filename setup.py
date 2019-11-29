@@ -4,11 +4,11 @@ with open("README.md", "r", encoding='utf8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="code_record",
-    version="0.0.2",
-    author="Steven wang",
+    name="codes",
+    version="0.1.2",
+    author="Steven Wang",
     author_email="wangzhou8284@outlook.com",
-    description="useful codes",
+    description="useful code records",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/StevenLianaL/code_record",
