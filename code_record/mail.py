@@ -38,13 +38,17 @@ class EmailMessage:
         yield self.connection
         self.connection.close()
 
-    def init_message(self):
+    def init_message(self, msg_type: str = ''):
         msg = MIMEMultipart()
         msg['From'] = self.from_email
         msg['To'] = COMMASPACE.join(self.to)
         msg['Date'] = formatdate(localtime=True)
         msg['Subject'] = self.subject
-        msg.attach(MIMEText(self.body))
+        if msg_type == 'HTML':
+            msg_body = MIMEText(self.body, "HTML", 'utf-8')
+        else:
+            msg_body = MIMEText(self.body)
+        msg.attach(msg_body)
         return msg
 
     def init_attachments(self, msg):
@@ -58,8 +62,8 @@ class EmailMessage:
             part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
             msg.attach(part)
 
-    def send(self):
-        msg = self.init_message()
+    def send(self, body_type: str = ''):
+        msg = self.init_message(msg_type=body_type)
 
         if self.attachments:
             self.init_attachments(msg)

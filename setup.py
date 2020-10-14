@@ -5,7 +5,7 @@ with open("README.md", "r", encoding='utf8') as fh:
 
 setuptools.setup(
     name="codes",
-    version="0.1.2",
+    version="0.1.3",
     author="Steven Wang",
     author_email="wangzhou8284@outlook.com",
     description="useful code records",
